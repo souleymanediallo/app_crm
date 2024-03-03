@@ -1,5 +1,207 @@
 {% extends "layout.html" %}
-
+{% load static %}
 {% block content %}
-<h1>Hello, world!</h1>
+<!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                <h4 class="mb-sm-0">Dashboard</h4>
+
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                                        <li class="breadcrumb-item active">Dashboard</li>
+                                    </ol>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+
+                    <div class="row">
+                        <div class="col-xl-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row align-items-center gy-4">
+                                        <div class="col-sm-8">
+                                            <div class="box">
+                                                <h5 class="fs-20 text-truncate">Professional Invoices Made Easy.</h5>
+                                                <p class="text-muted fs-15">Quickly understand who your best customers little and motivation to pay thair bills.</p>
+                                                <a href="" class="btn btn-primary">Warch Tutorial</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="text-center px-2">
+                                                <img src="{% static 'images/invoice-widget.png' %}" class="img-fluid" style="height: 141px;" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-7">
+                            <div class="card dash-mini">
+                                <div class="card-header border-0 align-items-center d-flex">
+                                    <h4 class="card-title mb-0 flex-grow-1">This Week's Overview</h4>
+                                    <div class="flex-shrink-0">
+                                        <div class="dropdown card-header-dropdown">
+                                            <a class="text-reset" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <span class="fw-semibold text-uppercase fs-14">Sort by: </span><span class="text-muted">Current Week<i class="las la-angle-down fs-12 ms-2"></i></span>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-end">
+                                                <a class="dropdown-item" href="#">Today</a>
+                                                <a class="dropdown-item" href="#">Last Week</a>
+                                                <a class="dropdown-item" href="#">Last Month</a>
+                                                <a class="dropdown-item" href="#">Current Year</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- end card header -->
+
+                                <div class="card-body pt-1">
+                                    <div class="row">
+                                        <div class="col-lg-4 mini-widget pb-3 pb-lg-0">
+                                            <div class="d-flex align-items-end">
+                                                <div class="flex-grow-1">
+                                                    <h2 class="mb-0 fs-24"><span class="counter-value" data-target="197">54</span></h2>
+                                                    <h5 class="text-muted fs-16 mt-2 mb-0">Clients Added</h5>
+                                                    <p class="text-muted mt-3 pt-1 mb-0 text-truncate"> <span class="badge bg-info me-1">1.15%</span>  since last week</p>
+                                                </div>
+                                                <div class="flex-shrink-0 text-end dash-widget">
+                                                    <div id="mini-chart1" data-colors='["--in-primary", "--in-light"]' class="apex-charts"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 mini-widget py-3 py-lg-0">
+                                            <div class="d-flex align-items-end">
+                                                <div class="flex-grow-1">
+                                                    <h2 class="mb-0 fs-24"><span class="counter-value" data-target="634">124</span></h2>
+                                                    <h5 class="text-muted fs-16 mt-2 mb-0">Contracts Signed</h5>
+                                                    <p class="text-muted mt-3 pt-1 mb-0 text-truncate"> <span class="badge bg-danger me-1">1.15%</span>  since last week</p>
+                                                </div>
+                                                <div class="flex-shrink-0 text-end dash-widget">
+                                                    <div id="mini-chart2" data-colors='["--in-primary", "--in-light"]' class="apex-charts"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 mini-widget pt-3 pt-lg-0">
+                                            <div class="d-flex align-items-end">
+                                                <div class="flex-grow-1">
+                                                    <h2 class="mb-0 fs-24"><span class="counter-value" data-target="512">214</span></h2>
+                                                    <h5 class="text-muted fs-16 mt-2 mb-0">Invoice Sent</h5>
+                                                    <p class="text-muted mt-3 pt-1 mb-0 text-truncate"> <span class="badge bg-info me-1">3.14%</span>  since last week</p>
+                                                </div>
+                                                <div class="flex-shrink-0 text-end dash-widget">
+                                                    <div id="mini-chart3" data-colors='["--in-primary", "--in-light"]' class="apex-charts"></div>
+                                                </div>
+                                            </div>
+                                        </div><!-- end col -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end row -->
+
+                    <div class="row">
+                        <div class="col-xl-8">
+                            <div class="card">
+                                <div class="card-header border-0 align-items-center d-flex">
+                                    <h4 class="card-title mb-0 flex-grow-1">Payment Activity</h4>
+                                    <div>
+                                        <button type="button" class="btn btn-soft-info btn-sm">
+                                            ALL
+                                        </button>
+                                        <button type="button" class="btn btn-soft-info btn-sm">
+                                            1M
+                                        </button>
+                                        <button type="button" class="btn btn-soft-info btn-sm">
+                                            6M
+                                        </button>
+                                        <button type="button" class="btn btn-info btn-sm">
+                                            1Y
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body py-1">
+                                    <div class="row gy-2">
+                                        <div class="col-md-4">
+                                            <h4 class="fs-22 mb-0">$23,590.00</h4>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="d-flex main-chart justify-content-end">
+                                                <div class="px-4 border-end">
+                                                    <h4 class="text-primary fs-22 mb-0">$584k <span class="text-muted d-inline-block fs-17 align-middle ms-0 ms-sm-2">Incomes</span></h4>
+                                                </div>
+                                                <div class="ps-4">
+                                                    <h4 class="text-primary fs-22 mb-0">$324k <span class="text-muted d-inline-block fs-17 align-middle ms-0 ms-sm-2">Expenses</span></h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="stacked-column-chart" class="apex-charts" data-colors='["--in-primary", "--in-light"]' dir="ltr"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-start">
+                                        <div class="flex-grow-1 overflow-hidden">
+                                            <h5 class="card-title mb-2 text-truncate">Structure</h5>
+                                        </div>
+                                        <div class="flex-shrink-0 ms-2">
+                                            <div class="dropdown">
+                                                <a class="text-reset" href="#" data-bs-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false">
+                                                    <span class="fw-semibold text-uppercase fs-14">Sort By:</span> <span
+                                                        class="text-muted">Weekly<i class="las la-angle-down fs-12 ms-2"></i></span>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-end">
+                                                    <a class="dropdown-item" href="#">Yearly</a>
+                                                    <a class="dropdown-item" href="#">Monthly</a>
+                                                    <a class="dropdown-item" href="#">Weekly</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="structure-widget" data-colors='["--in-primary", "--in-primary-rgb, 0.7", "--in-light"]' class="apex-charts" dir="ltr"></div>
+
+
+                                    <div class="px-2">
+                                        <div class="structure-list d-flex justify-content-between border-bottom">
+                                            <p class="mb-0"><i class="las la-dot-circle fs-18 text-primary me-2"></i>Invoiced</p>
+                                            <div>
+                                                <span class="pe-2 pe-sm-5">$56,236</span>
+                                                <span class="badge bg-primary"> + 0.2% </span>
+                                            </div>
+                                        </div>
+                                        <div class="structure-list d-flex justify-content-between border-bottom">
+                                            <p class="mb-0"><i class="las la-dot-circle fs-18 text-primary me-2"></i>Collected</p>
+                                            <div>
+                                                <span class="pe-2 pe-sm-5">$12,596</span>
+                                                <span class="badge bg-primary"> - 0.7% </span>
+                                            </div>
+                                        </div>
+                                        <div class="structure-list d-flex justify-content-between pb-0">
+                                            <p class="mb-0"><i class="las la-dot-circle fs-18 text-primary me-2"></i>Outstanding</p>
+                                            <div>
+                                                <span class="pe-2 pe-sm-5">$1,568</span>
+                                                <span class="badge bg-primary"> + 0.4% </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end row -->
+
 {% endblock %}

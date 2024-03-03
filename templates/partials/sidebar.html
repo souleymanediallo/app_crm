@@ -1,0 +1,115 @@
+{% load static %}
+<div class="app-menu navbar-menu">
+            <!-- LOGO -->
+            <div class="navbar-brand-box">
+                <!-- Dark Logo-->
+                <a href="/" class="logo logo-dark">
+                    <span class="logo-sm">
+                        <img src="{% static 'images/logo-sm.png' %}" alt="" height="22">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="{% static 'images/logo-dark.png' %}" alt="" height="21">
+                    </span>
+                </a>
+                <!-- Light Logo-->
+                <a href="/" class="logo logo-light">
+                    <span class="logo-sm">
+                        <img src="{% static 'images/logo-sm.png' %}" alt="" height="22">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="{% static 'images/logo-light.png' %}" alt="" height="21">
+                    </span>
+                </a>
+                <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
+                    <i class="ri-record-circle-line"></i>
+                </button>
+            </div>
+
+            <div id="scrollbar">
+                <div class="container-fluid">
+
+                    <div id="two-column-menu">
+                    </div>
+                    <ul class="navbar-nav" id="navbar-nav">
+                        <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="/">
+                                <i class="las la-house-damage"></i> <span data-key="t-dashboard">Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="{% url 'client_list' %}">
+                                <i class="las la-file-invoice"></i> <span data-key="t-invoices">Clients</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="{% url 'client_list' %}">
+                                <i class="las la-cog"></i> <span data-key="t-invoices">Services</span>
+                            </a>
+                        </li>
+
+
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarAuthentication" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAuthentication">
+                                <i class="las la-cog"></i> <span data-key="t-authentication">Factures</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarAuthentication">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="auth-signin.html" class="nav-link" data-key="t-signin">Sign In</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="auth-signup.html" class="nav-link" data-key="t-signup">Sign Up</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="auth-pass-reset.html" class="nav-link" data-key="t-password-reset">Password Reset</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="auth-lockscreen.html" class="nav-link" data-key="t-lock-screen">Lock Screen</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarAdvanceUI" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAdvanceUI">
+                                <i class="las la-share-alt"></i> <span data-key="t-advance-ui">Dépenses</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarAdvanceUI">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="advance-ui-sweetalerts.html" class="nav-link" data-key="t-sweet-alerts">Sweet Alerts</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="advance-ui-nestable.html" class="nav-link" data-key="t-nestable-list">Nestable List</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="advance-ui-scrollbar.html" class="nav-link" data-key="t-scrollbar">Scrollbar</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="advance-ui-swiper.html" class="nav-link" data-key="t-swiper-slider">Swiper Slider</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="advance-ui-ratings.html" class="nav-link" data-key="t-ratings">Ratings</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="advance-ui-highlight.html" class="nav-link" data-key="t-highlight">Highlight</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="advance-ui-scrollspy.html" class="nav-link" data-key="t-scrollSpy">ScrollSpy</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+
+                    </ul>
+                </div>
+                <!-- Sidebar -->
+            </div>
+
+            <div class="sidebar-background"></div>
+        </div>
