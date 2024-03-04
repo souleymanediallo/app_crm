@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %} Ajouter un devis {% endblock title %}
+
+{% block extra_css %}
+
+    <!-- Sweet Alert css-->
+    <link href="{% static 'libs/sweetalert2/sweetalert2.min.css' %}" rel="stylesheet" type="text/css" />
+{% endblock extra_css %}
+
+
+{% block content %}
+
+    {% block pagetitle %}
+        {% include "partials/page-title.html" with pagetitle="Devis" title="Ajouter un devis" %}
+    {% endblock pagetitle %}
+
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="document_type" class="form-label">Document</label>
+                                {{ form.document_type }}
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="client" class="form-label">Client</label>
+                                {{ form.client }}
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="firstNameinput" class="form-label">Date de départ</label>
+                                {{ form.date_start }}
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="lastNameinput" class="form-label">Heure de départ</label>
+                                {{ form.time_start }}
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="lastNameinput" class="form-label">Date de Retour</label>
+                                {{ form.date_end }}
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="lastNameinput" class="form-label">Heure de retour</label>
+                                {{ form.time_end }}
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="lastNameinput" class="form-label">Durée</label>
+                                {{ form.duration }}
+                            </div>
+                        </div><!--end col-->
+
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="lastNameinput" class="form-label">Services</label>
+                                {{ form.services }}
+                            </div>
+                        </div><!--end col-->
+
+                         <div class="col-12">
+                            <div class="mb-3">
+                                <label for="compnayNameinput" class="form-label">Message</label>
+                                {{ form.description }}
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-lg-12">
+                            <div class="text-end">
+                                <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            </div>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

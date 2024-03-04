@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "pages.apps.PagesConfig",
     "clients.apps.ClientsConfig",
+    "services.apps.ServicesConfig",
     # All Auth
     "allauth",
     "allauth.account",
