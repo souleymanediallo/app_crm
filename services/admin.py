@@ -28,7 +28,7 @@ admin.site.register(Service, ServiceAdmin)
 
 class InvoiceAdmin(admin.ModelAdmin):
     list_display = [
-        "document_type",
+        "name",
         "client",
         "start_city",
         "end_city",
@@ -56,7 +56,8 @@ class InvoiceAdmin(admin.ModelAdmin):
         "time_start",
         "date_end",
         "time_end",
-        "duration",    ]
+        "duration",
+    ]
 
     def get_total_price(self, obj):
         return sum([service.price for service in obj.services.all()])
@@ -67,6 +68,7 @@ class InvoiceAdmin(admin.ModelAdmin):
     get_total_price.short_description = "Total Price"
     get_total_duration.short_description = "Total Duration"
     readonly_fields = ["get_total_price", "get_total_duration"]
-    fields = ["client", "services", "start_city", "end_city", "date_start", "time_start", "date_end", "time_end", "duration", "description", "get_total_price", "get_total_duration"]
+    fields = ["name", "client", "services", "start_city", "end_city", "date_start", "time_start", "date_end", "time_end", "duration", "description", "get_total_price", "get_total_duration"]
+
 
 admin.site.register(Invoice, InvoiceAdmin)

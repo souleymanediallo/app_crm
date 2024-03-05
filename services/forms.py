@@ -16,7 +16,7 @@ class ServiceForm(forms.ModelForm):
 class InvoiceForm(forms.ModelForm):
     class Meta:
         model = Invoice
-        fields = ['document_type', 'client', 'services', 'start_city', 'end_city', 'date_start', 'time_start',
+        fields = ['name', 'client', 'services', 'start_city', 'end_city', 'date_start', 'time_start',
                   'date_end', 'time_end', 'duration', 'description']
 
     def __init__(self, *args, **kwargs):

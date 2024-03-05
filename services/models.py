@@ -41,12 +41,14 @@ class Service(models.Model):
 
 
 class Invoice(models.Model):
-    DOCUMENT_TYPE = [
+
+    NAME = [
         ('Devis', 'Devis'),
         ('Facture', 'Facture'),
         ('Avoir', 'Avoir'),
     ]
-    document_type = models.CharField(max_length=100, choices=DOCUMENT_TYPE, default='Devis')
+
+    name = models.CharField(max_length=100, choices=NAME, default='Devis')
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     services = models.ManyToManyField(Service, related_name="invoices")
     start_city = models.CharField(max_length=100)

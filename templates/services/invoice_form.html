@@ -2,13 +2,6 @@
 {% load static %}
 {% block title %} Ajouter un devis {% endblock title %}
 
-{% block extra_css %}
-
-    <!-- Sweet Alert css-->
-    <link href="{% static 'libs/sweetalert2/sweetalert2.min.css' %}" rel="stylesheet" type="text/css" />
-{% endblock extra_css %}
-
-
 {% block content %}
 
     {% block pagetitle %}
@@ -23,59 +16,69 @@
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="row">
+                        {{ form.errors }}
                         <div class="col-6">
                             <div class="mb-3">
-                                <label for="document_type" class="form-label">Document</label>
-                                {{ form.document_type }}
+                                {{ form.name }}
                             </div>
                         </div><!--end col-->
                         <div class="col-6">
                             <div class="mb-3">
-                                <label for="client" class="form-label">Client</label>
+                                {{ form.start_city }}
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-6">
+                            <div class="mb-3">
+                                {{ form.end_city }}
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-6">
+                            <div class="mb-3">
+
                                 {{ form.client }}
                             </div>
                         </div><!--end col-->
                         <div class="col-6">
                             <div class="mb-3">
-                                <label for="firstNameinput" class="form-label">Date de départ</label>
+
                                 {{ form.date_start }}
                             </div>
                         </div><!--end col-->
                         <div class="col-6">
                             <div class="mb-3">
-                                <label for="lastNameinput" class="form-label">Heure de départ</label>
+
                                 {{ form.time_start }}
                             </div>
                         </div><!--end col-->
                         <div class="col-6">
                             <div class="mb-3">
-                                <label for="lastNameinput" class="form-label">Date de Retour</label>
+
                                 {{ form.date_end }}
                             </div>
                         </div><!--end col-->
                         <div class="col-6">
                             <div class="mb-3">
-                                <label for="lastNameinput" class="form-label">Heure de retour</label>
+
                                 {{ form.time_end }}
                             </div>
                         </div><!--end col-->
                         <div class="col-6">
                             <div class="mb-3">
-                                <label for="lastNameinput" class="form-label">Durée</label>
+
                                 {{ form.duration }}
                             </div>
                         </div><!--end col-->
 
                         <div class="col-6">
                             <div class="mb-3">
-                                <label for="lastNameinput" class="form-label">Services</label>
+
                                 {{ form.services }}
                             </div>
                         </div><!--end col-->
 
                          <div class="col-12">
                             <div class="mb-3">
-                                <label for="compnayNameinput" class="form-label">Message</label>
+
                                 {{ form.description }}
                             </div>
                         </div><!--end col-->

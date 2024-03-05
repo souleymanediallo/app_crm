@@ -63,7 +63,7 @@
                                             <tbody>
                                                 {% for invoice in invoices %}
                                                 <tr>
-                                                    <td>{{ invoice.document_type }}</td>
+                                                    <td>{{ invoice.name }}</td>
                                                     <td>{{ invoice.client }}</td>
 
                                                     <td>{{ invoice.start_city }}</td>
@@ -75,7 +75,6 @@
                                                     <td>Non renseigné </td>
                                                     {% else %}
                                                     <td>{{ invoice.date_end }}</td>
-                                                    <td>{{ invoice.time_end }}</td>
                                                     {% endif %}
                                                     {% if not invoice.date_end %}
                                                     <td>Non renseigné </td>

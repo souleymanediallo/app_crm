@@ -53,8 +53,8 @@ class InvoiceCreateView(CreateView):
     form_class = InvoiceForm
     template_name = "services/invoice_form.html"
     context_object_name = "form"
-    print(form_class)
-    success_url = "/invoices"
+    print(context_object_name)
+    success_url = "/services/invoices"
 
 
 class InvoiceUpdateView(UpdateView):
