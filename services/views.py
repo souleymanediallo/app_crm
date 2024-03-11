@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView, CreateView, ListView, UpdateView, DeleteView
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import TemplateView, CreateView, ListView, UpdateView, DeleteView, DetailView
 from .models import Service, Invoice
 from .forms import ServiceForm, InvoiceForm
 # Create your views here.
@@ -43,10 +43,16 @@ class InvoiceListView(ListView):
     context_object_name = "invoices"
 
 
-class InvoiceDetailView(TemplateView):
+class InvoiceDetailView(DetailView):
     model = Invoice
     template_name = "services/invoice_detail.html"
     context_object_name = "invoice"
+    # slug_field = "uuid"
+    # slug_url_kwarg = "uuid"
+
+    def get_object(self):
+        uuid = self.kwargs.get("pk") # pk is the name of the url parameter
+        return get_object_or_404(Invoice, uuid=uuid)
 
 
 class InvoiceCreateView(CreateView):
