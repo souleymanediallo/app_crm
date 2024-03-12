@@ -73,3 +73,7 @@ class InvoiceAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Invoice, InvoiceAdmin)
+# TODO : CRUD for services and invoices
+# TODO : Add a filter for the services and invoices
+# TODO : Add a search bar for the services and invoices
+# TODO : Add a pagination for the services and invoices
