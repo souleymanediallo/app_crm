@@ -11,7 +11,7 @@ class ServiceListView(ListView):
     context_object_name = "services"
 
 
-class ServiceDetailView(TemplateView):
+class ServiceDetailView(DetailView):
     model = Service
     template_name = "services/service_detail.html"
     context_object_name = "service"
