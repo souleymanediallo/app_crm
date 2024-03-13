@@ -16,6 +16,10 @@ class ServiceDetailView(DetailView):
     template_name = "services/service_detail.html"
     context_object_name = "service"
 
+    def get_object(self):
+        uuid = self.kwargs.get("pk") # pk is the name of the url parameter
+        return get_object_or_404(Service, uuid=uuid)
+
 
 class ServiceCreateView(CreateView):
     form_class = ServiceForm
