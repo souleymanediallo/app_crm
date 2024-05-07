@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load invoice_filters %}
 {% block title %} Invoices Details {% endblock title %}
 
 
@@ -10,19 +11,20 @@
   <header>
 	  <div class="row">
 		<div class="col-sm-6">
-		  <img id="logo" src="{% static 'images/p-15.png' %}" title="logo" alt="Koice" height="300"/>
+		  <img id="logo" src="{% static 'images/p-15.png' %}" title="logo" alt="logo" height="300"/>
 		</div>
 		<div class="col-sm-6">
 			<div class="text-top p-2 border rounded-2 bg-light">
-		  		<h4 class="text-4 mb-1">Fature N° </h4>
-				<p class="mb-1">Date :  </p>
+		  		<h4 class="text-6 mb-1">{{ invoice.name }} <span class="text-2">Référence :  {{ short_uuid }}</span></h4>
+				<p class="mb-1">Date :  {{ today|date:"d M Y" }}</p>
 			</div>
 			<div class="address mt-3 border rounded-2 p-2 bg-light">
 			<address>
-		  Smith Rhodes<br />
-		  15 Hodges Mews, High Wycombe<br />
-		  HP12 3JL<br />
-		  United Kingdom
+		  {{ invoice.client.title_social }} {{ invoice.client.first_name }} {{ invoice.client.last_name }}<br />
+		  Tél : {{ invoice.client.phone }}<br />
+		  {{ invoice.client.address_set.first.country|default_if_none:"Pays non spécifié" }}<br /><br />
+
+
 		  </address>
 			</div>
 		</div>
@@ -30,57 +32,57 @@
   </header>
 
   <!-- Main Content -->
-  <main>
-		<div class="table-responsive">
-		<table class="table border mb-0">
-			<thead>
-			  <tr class="bg-light">
-				<td class="col-5"><strong>Déscription</strong></td>
-				<td class="col-1 text-center"><strong>Durée</strong></td>
-				<td class="col-2 text-center"><strong>PU HT</strong></td>
-				<td class="col-2 text-end"><strong>Total</strong></td>
-			  </tr>
-			</thead>
-			<tbody>
-				<tr>
-				  <td class="col-5">
-					NUUVO C11 2023 (Cool Blue, 128 GB)
-					<p class="text-0 text-black-50 lh-base mb-0">Warranty: 1 Year Warranty for Mobile and 6 Months for Accessories</p>
-					<p class="text-1 mb-0">1. [IMEI/Serial No: 862065058646712 ]</p>
-				  </td>
-				  <td class="col-1 text-center">1</td>
-				  <td class="col-2 text-center">$299</td>
-				  <td class="col-2 text-end">$274.00</td>
-				</tr>
-				<tr>
-				  <td class="col-5">
-					Flip Cover for NUUVO C11 2023
-					<p class="text-0 text-black-50 lh-base mb-0">Brown, Pack of: 1</p>
-				  </td>
-				  <td class="col-1 text-center">1</td>
-				  <td class="col-2 text-center">3 €</td>
-				  <td class="col-2 text-end">3.00 €</td>
-				</tr>
-			</tbody>
-		</table>
-		</div>
-		<div class="table-responsive">
-			<table class="table border border-top-0 mb-0">
-				<tr class="bg-light">
-				  <td class="text-end"><strong>Total HT :</strong></td>
-				  <td class="col-sm-2 text-end">277.00 €</td>
-				</tr>
-				<tr class="bg-light">
-				  <td class="text-end"><strong>TVA :</strong></td>
-				  <td class="col-sm-2 text-end">15.00 €</td>
-				</tr>
-				<tr class="bg-light">
-				  <td class="text-end"><strong>Net à payé :</strong></td>
-				  <td class="col-sm-2 text-end">292.00 €</td>
-				</tr>
-			</table>
-		</div>
-  </main>
+ <main>
+    <div class="table-responsive">
+        <table class="table border mb-0">
+            <thead>
+                <tr class="bg-light">
+                    <th class="col-5"><strong>Description</strong></th>
+                    <th class="col-1 text-center"><strong>Durée</strong></th>
+                    <th class="col-2 text-center"><strong>PU HT</strong></th>
+                    <th class="col-2 text-end"><strong>Total</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for service in invoice.services.all %}
+                    <tr>
+                        <td class="col-5">
+                            {{ service.name }}
+                            <p class="text-0 text-black-50 lh-base mb-0">{{ service.description }}</p>
+                        </td>
+                        <td class="col-1 text-center">{{ service.duration }}</td> <!-- Utilisation de la durée de l'invoice -->
+                        <td class="col-2 text-center">{{ service.price }} €</td>
+                        <td class="col-2 text-end">{{ service.price|multiply:service.duration }} €</td>
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="4">Aucun service disponible</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="table-responsive">
+        <table class="table border border-top-0 mb-0 table-half-page-right mt-3">
+            <tr class="bg-light">
+                <td class="text-end"><strong>Total HT :</strong></td>
+                <td class="col-sm-2 text-end">{{ invoice.get_total_ht }} €</td>
+            </tr>
+            <tr class="bg-light">
+                <td class="text-end"><strong>TVA :</strong></td>
+                <td class="col-sm-2 text-end">{{ invoice.get_tva }} €</td>
+            </tr>
+            <tr class="bg-light">
+                <td class="text-end"><strong>Acompte :</strong></td>
+                <td class="col-sm-2 text-end">{{ invoice.advance_payment }} €</td>
+            </tr>
+            <tr class="bg-light">
+                <td class="text-end"><strong>Net à payer :</strong></td>
+                <td class="col-sm-2 text-end">{{ invoice.get_net_a_payer }} €</td>
+            </tr>
+        </table>
+    </div>
+    </div>
+
+
+</main>
   <!-- Footer -->
   <footer class="mt-5">
 

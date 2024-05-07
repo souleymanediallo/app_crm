@@ -598,3 +598,19 @@ hr {
         page-break-after: avoid; /* Tente de garder le footer à la fin du contenu */
     }
 }
+
+.table-half-page-right {
+        width: 50%;
+        margin-left: 50%; /* Déplace le tableau vers la droite de 50% de la largeur du conteneur parent */
+    }
+
+    @media print {
+        .table-half-page-right {
+            width: 50%;
+            margin-left: 50%; /* Assure que le tableau est à droite et occupe la moitié de la page à l'impression */
+        }
+    }
+
+    .text-end {
+    white-space: nowrap; /* Empêche le retour à la ligne dans les cellules */
+}

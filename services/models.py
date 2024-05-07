@@ -31,6 +31,7 @@ class Service(models.Model):
     type_service = models.CharField(max_length=100, choices=TYPE_SERVICE)
     car = models.CharField(max_length=100, choices=CARS)
     price = models.DecimalField(max_digits=10, decimal_places=2)
+    duration = models.IntegerField(default=1)
     description = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -59,6 +60,7 @@ class Invoice(models.Model):
     time_end = models.TimeField(blank=True, null=True)
     duration = models.IntegerField()
     description = models.TextField(blank=True, null=True)
+    advance_payment = models.DecimalField(max_digits=10, decimal_places=2, default=0.00, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
@@ -67,8 +69,20 @@ class Invoice(models.Model):
         return self.client.first_name
 
     def get_total_price(self):
-        return sum([service.price for service in self.services.all()])
+        return sum([service.price * service.duration for service in self.services.all()])
+
+    def get_total_ht(self):
+        return sum(service.price * service.duration for service in self.services.all())
 
     def get_total_duration(self):
         return sum([service.duration for service in self.services.all()])
+
+    def get_tva(self):  # rate est le taux de TVA applicable
+        tva = 0
+        return tva
+
+    def get_net_a_payer(self):
+        total_ht = self.get_total_ht()
+        total_due = total_ht - self.advance_payment
+        return max(total_due, 0)
 

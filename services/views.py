@@ -3,7 +3,7 @@ from django.views.generic import TemplateView, CreateView, ListView, UpdateView,
 from .models import Service, Invoice
 from .forms import ServiceForm, InvoiceForm
 # Create your views here.
-
+from datetime import datetime
 from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
@@ -60,22 +60,12 @@ class InvoiceDetailView(DetailView):
         uuid = self.kwargs.get("pk") # pk is the name of the url parameter
         return get_object_or_404(Invoice, uuid=uuid)
 
-    # def get(self, request, *args, **kwargs):
-    #     # Récupérer l'objet facture
-    #     invoice = self.get_object()
-    #     # Spécifiez le chemin vers votre template HTML pour le PDF
-    #     template_path = 'services/invoice_detail.html'  # Utilisez un template spécifique pour le PDF sans header/footer
-    #     context = {'invoice': invoice}  # Contexte passé au template
-    #     response = HttpResponse(content_type='application/pdf')
-    #     response['Content-Disposition'] = 'inline; filename="invoice_detail.pdf"'  # Affiche le PDF dans le navigateur
-    #
-    #     template = get_template(template_path)
-    #     html = template.render(context)
-    #
-    #     pisa_status = pisa.CreatePDF(html, dest=response)
-    #     if pisa_status.err:
-    #         return HttpResponse('We had some errors <pre>' + html + '</pre>')
-    #     return response
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["today"] = datetime.today().date()
+        short_uuid = str(self.object.uuid)[:8].upper()
+        context["short_uuid"] = short_uuid
+        return context
 
 
 class InvoiceCreateView(CreateView):
