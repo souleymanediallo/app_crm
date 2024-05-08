@@ -21,7 +21,10 @@
 			<div class="address mt-3 border rounded-2 p-2 bg-light">
 			<address>
 		  {{ invoice.client.title_social }} {{ invoice.client.first_name }} {{ invoice.client.last_name }}<br />
-		  Tél : {{ invoice.client.phone }}<br />
+                {% if invoice.client.phone %}
+		            Tél : {{ invoice.client.phone }}<br />
+                {% endif %}
+
 		  {{ invoice.client.address_set.first.country|default_if_none:"Pays non spécifié" }}<br /><br />
 
 
@@ -47,10 +50,20 @@
                 {% for service in invoice.services.all %}
                     <tr>
                         <td class="col-5">
-                            {{ service.name }}
-                            <p class="text-0 text-black-50 lh-base mb-0">{{ service.description }}</p>
+                            {{ service.type_service }} - {{ service.car }} avec chauffeur<br>
+                            <p class="text-0 text-black-50 lh-base mb-0 description">{{ service.description|safe }}</p>
                         </td>
-                        <td class="col-1 text-center">{{ service.duration }}</td> <!-- Utilisation de la durée de l'invoice -->
+                        <td class="col-1 text-center">{{ service.duration }}
+                            {% if service.type_service == "MISE-A-DISPOSITION" and service.duration > 1 %}
+                                jours
+                            {% elif service.type_service == "MISE-A-DISPOSITION" and service.duration < 1 %}
+                                heure
+                            {% elif service.type_service != "MISE-A-DISPOSITION" and service.duration > 1 %}
+                                heure
+                            {% else %}
+                                heure
+                            {% endif %}
+                        </td> <!-- Utilisation de la durée de l'invoice -->
                         <td class="col-2 text-center">{{ service.price }} €</td>
                         <td class="col-2 text-end">{{ service.price|multiply:service.duration }} €</td>
                     </tr>
