@@ -69,10 +69,12 @@
                 <td class="text-end"><strong>TVA :</strong></td>
                 <td class="col-sm-2 text-end">{{ invoice.get_tva }} €</td>
             </tr>
+            {% if invoice.advance_payment > 0 %}
             <tr class="bg-light">
                 <td class="text-end"><strong>Acompte :</strong></td>
                 <td class="col-sm-2 text-end">{{ invoice.advance_payment }} €</td>
             </tr>
+            {% endif %}
             <tr class="bg-light">
                 <td class="text-end"><strong>Net à payer :</strong></td>
                 <td class="col-sm-2 text-end">{{ invoice.get_net_a_payer }} €</td>
@@ -87,8 +89,7 @@
   <footer class="mt-5">
 
 
-  <p class="text-0 mb-0"><strong>Devis valable 15 jours à compter de la date d'envoi.</strong> Vous pouvez procédez au réglement d'un acompte de 50% ou de la totalité de votre location,
-	  cela confirmera votre réservation de voiture avec chauffeur. Vous recevrez par mail la confirmation de votre réservation ansi que votre facture. 4 à 3 jours avant le début de votre réservation, vous recevrez les informations concernant votre chauffeur.</p>
+  <p class="text-0 mb-0"><strong>Ce devis reste valide pour une période de 15 jours à compter de la date d'émission.</strong>  Pour confirmer votre réservation de voiture avec chauffeur, vous avez la possibilité de régler un acompte de 50 % ou le montant total de la prestation. Suite à votre paiement, une confirmation de réservation ainsi qu'une facture vous seront envoyées par courriel. Entre quatre et trois jours avant la date de début de votre réservation, vous recevrez par mail les détails relatifs à votre chauffeur.</p>
 <hr class="my-2">
   <div class="text-center">
 	<div class="btn-group btn-group-sm d-print-none"> <a href="javascript:window.print()" class="btn btn-light border text-black-50 shadow-none"><i class="fa fa-print"></i> Print & Download</a> </div>

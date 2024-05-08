@@ -3,7 +3,6 @@ import uuid
 
 from clients.models import Client
 
-
 # Create your models here.
 class Service(models.Model):
     CARS = [
@@ -58,7 +57,6 @@ class Invoice(models.Model):
     time_start = models.TimeField()
     date_end = models.DateField(blank=True, null=True)
     time_end = models.TimeField(blank=True, null=True)
-    duration = models.IntegerField()
     description = models.TextField(blank=True, null=True)
     advance_payment = models.DecimalField(max_digits=10, decimal_places=2, default=0.00, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)

@@ -37,7 +37,6 @@ class InvoiceAdmin(admin.ModelAdmin):
         "time_start",
         "date_end",
         "time_end",
-        "duration",
     ]
     search_fields = [
         "client",
@@ -47,7 +46,6 @@ class InvoiceAdmin(admin.ModelAdmin):
         "time_start",
         "date_end",
         "time_end",
-        "duration",
     ]
     list_filter = [
         "client",
@@ -57,7 +55,6 @@ class InvoiceAdmin(admin.ModelAdmin):
         "time_start",
         "date_end",
         "time_end",
-        "duration",
     ]
 
     def get_total_price(self, obj):
@@ -69,7 +66,7 @@ class InvoiceAdmin(admin.ModelAdmin):
     get_total_price.short_description = "Total Price"
     get_total_duration.short_description = "Total Duration"
     readonly_fields = ["get_total_price", "get_total_duration"]
-    fields = ["name", "client", "services", "start_city", "end_city", "date_start", "time_start", "date_end", "time_end", "duration", "description", "get_total_price", "get_total_duration"]
+    fields = ["name", "client", "services", "start_city", "end_city", "date_start", "time_start", "date_end", "time_end", "description", "get_total_price", "get_total_duration"]
 
 
 admin.site.register(Invoice, InvoiceAdmin)
