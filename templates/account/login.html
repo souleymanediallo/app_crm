@@ -1,21 +1,20 @@
 {% extends 'account/account_base.html' %}
 {% load static %}
-{% load i18n %}
 {% load crispy_forms_tags %}
 
-{% block title %}Sign In{% endblock title %}
+{% block title %}Connexion{% endblock title %}
     
 {% block content %}
 
     <div class="col-lg-6">
         <div class="p-lg-5 p-4">
             <div class="text-center">
-                <h5 class="mb-0">Welcome Back !</h5>
-                <p class="text-muted mt-2">Sign in to continue to Invoika.</p>
+                <h5 class="mb-0">TEAM PEQUINZE</h5>
+                <p class="text-muted mt-2">Renseignez votre identifiant et mot de passe.</p>
             </div>
         
             <div class="mt-4">
-                <form class="needs-validation auth-input" novalidate method="POST" action="{% url 'account_login' %}">
+                <form class="needs-validation auth-input" novalidate method="POST" action="{% url 'login' %}">
                     {% for message in messages %}
                     <div class="alert {{ message.tags }} mb-4" role="alert">
                         <strong>{{ message }}</strong>
@@ -28,28 +27,21 @@
                     {% endif %}
                     {% csrf_token %}
                     <div class="mb-3">
-                        {{ form.login|as_crispy_field }}
+                        {{ form.username|as_crispy_field }}
                     </div>
 
                     <div class="mb-3">
                         {{ form.password|as_crispy_field }}                      
                     </div>
 
-                    <div class="form-check form-check-primary fs-16 py-2">
-                        <input class="form-check-input" type="checkbox" id="remember-check">
-                        <div class="float-end">
-                            <a href="#" class="text-muted text-decoration-underline fs-14">Forgot your password?</a>
-                        </div>
-                            {{ form.remember|as_crispy_field }}                              
-                    </div>
 
                     <div class="mt-2">
-                        <button class="btn btn-primary w-100" type="submit">Sign In</button>
+                        <button class="btn btn-primary w-100" type="submit">Connexion</button>
                     </div>
 
 
                     <div class="mt-4 text-center">
-                        <p class="mb-0">Don't have an account ? <a href="{{ signup_url }}" class="fw-medium text-primary text-decoration-underline"> Sign up</a> </p>
+                        <p class="mb-0">Mot de passe oublié ? Contactez votre responsable !</p>
                     </div>
                 </form>
             </div>
