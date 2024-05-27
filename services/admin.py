@@ -28,7 +28,6 @@ admin.site.register(Service, ServiceAdmin)
 
 class InvoiceAdmin(admin.ModelAdmin):
     list_display = [
-        "uuid",
         "name",
         "client",
         "start_city",

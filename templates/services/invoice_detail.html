@@ -20,7 +20,7 @@
 			</div>
 			<div class="address mt-3 border rounded-2 p-2 bg-light">
 			<address>
-		  {{ invoice.client.title_social }} {{ invoice.client.first_name }} {{ invoice.client.last_name }}<br />
+		  {{ invoice.client.title_social_ }} {{ invoice.client.first_name }} {{ invoice.client.last_name }}<br />
                 {% if invoice.client.phone %}
 		            Tél : {{ invoice.client.phone }}<br />
                 {% endif %}
@@ -100,13 +100,15 @@
 </main>
   <!-- Footer -->
   <footer class="mt-5">
+     <p class="text-0 mb-0"><strong>Ce devis reste valide pour une période de 15 jours à compter de la date d'émission.</strong>  Pour confirmer votre réservation de voiture avec chauffeur, vous avez la possibilité de régler un acompte de 50 % ou le montant total de la prestation. Suite à votre paiement, une confirmation de réservation ainsi qu'une facture vous seront envoyées par courriel. Entre quatre et trois jours avant la date de début de votre réservation, vous recevrez par mail les détails relatifs à votre chauffeur.</p>
+          <p class="text-0 mb-0"><strong>Mode de paiement : Virement bancaire, Orange Money, Wave.</strong></p>
 
-
-  <p class="text-0 mb-0"><strong>Ce devis reste valide pour une période de 15 jours à compter de la date d'émission.</strong>  Pour confirmer votre réservation de voiture avec chauffeur, vous avez la possibilité de régler un acompte de 50 % ou le montant total de la prestation. Suite à votre paiement, une confirmation de réservation ainsi qu'une facture vous seront envoyées par courriel. Entre quatre et trois jours avant la date de début de votre réservation, vous recevrez par mail les détails relatifs à votre chauffeur.</p>
+      <p class="text-0 mb-0">Pour toute question, vous pouvez nous contacter par téléphone au +33 6 23 21 40 09 ou par mail à contact@pequinze.com</p>
 <hr class="my-2">
   <div class="text-center">
 	<div class="btn-group btn-group-sm d-print-none"> <a href="javascript:window.print()" class="btn btn-light border text-black-50 shadow-none"><i class="fa fa-print"></i> Print & Download</a> </div>
   </div>
+
   </footer>
 </div>
 
