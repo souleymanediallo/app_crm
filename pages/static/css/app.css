@@ -10488,7 +10488,7 @@ span.flatpickr-weekday {
 
 .bg-auth {
   position: relative;
-  background-image: url("../images/bg-auth.jpg");
+  background-image: url("https://www.pequinze.com/wp-content/uploads/2016/08/voiture-4x4.png");
   background-position: bottom, 50px;
   background-size: cover;
 }
@@ -10526,7 +10526,7 @@ span.flatpickr-weekday {
 }
 
 .auth-one-bg {
-  background-image: url("../images/auth-one-bg.jpg");
+  background-image: url("https://www.pequinze.com/wp-content/uploads/2016/08/voiture-4x4.png");
   background-position: center;
   background-size: cover;
 }
