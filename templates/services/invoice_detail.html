@@ -20,14 +20,13 @@
 			</div>
 			<div class="address mt-3 border rounded-2 p-2 bg-light">
 			<address>
-		  {{ invoice.client.title_social_ }} {{ invoice.client.first_name }} {{ invoice.client.last_name }}<br />
-                {% if invoice.client.phone %}
-		            Tél : {{ invoice.client.phone }}<br />
-                {% endif %}
-
-		  {{ invoice.client.address_set.first.country|default_if_none:"Pays non spécifié" }}<br /><br />
-
-
+		        {{ invoice.client.title_social }} {{ invoice.client.first_name }} {{ invoice.client.last_name }}<br />
+                {{ invoice.client.address_set.first.company }}<br />
+                {{ invoice.client.address_set.first.address_1 }}<br />
+                {{ invoice.client.address_set.first.address_2 }}<br />
+                {{ invoice.client.address_set.first.zip_code }}
+                {{ invoice.client.address_set.first.city }}<br />
+		        {{ invoice.client.address_set.first.country|default_if_none:"Pays non spécifié" }}<br />
 		  </address>
 			</div>
 		</div>
